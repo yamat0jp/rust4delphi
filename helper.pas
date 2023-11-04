@@ -9,6 +9,7 @@ type
   public
     class function plus(a, b: integer): integer;
     class function mul(a, b: integer): integer;
+    class function minus(a, b: integer): integer;
   end;
 
   TMyPureObject = class(TPureObject)
@@ -33,6 +34,11 @@ begin
 end;
 
 { TPureObject }
+
+class function TPureObject.minus(a, b: integer): integer;
+begin
+  result := plus(a, -b);
+end;
 
 class function TPureObject.mul(a, b: integer): integer;
 begin
