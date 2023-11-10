@@ -69,19 +69,19 @@ end;
 class function TMyPureObject.filter(params: TArray<string>; len: integer)
   : TArray<string>;
 begin
-  result := [];
-  for var str in params do
-    if Length(str) = len then
-      result := result + [str];
+  for var i := 0 to High(params) do
+    if Length(params[i]) <> len then
+      params[i] := '';
+  result := params;
 end;
 
 class function TMyPureObject.filter(params: TArray<string>; c: Char)
   : TArray<string>;
 begin
-  result := [];
-  for var str in params do
-    if startWithN(str, c) then
-      result := result + [str];
+  for var i := 0 to High(params) do
+    if not startWithN(params[i], c) then
+      params[i] := '';
+  result := params;
 end;
 
 class function TMyPureObject.something: integer;
